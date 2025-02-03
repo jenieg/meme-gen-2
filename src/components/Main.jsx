@@ -25,17 +25,19 @@ export default function Main() {
                     Get a new meme image 🖼
                 </button>
             </div>
-            <div className="relative flex flex-col justify-center items-center">
-                <img
-                    src="http://i.imgflip.com/1bij.jpg"
-                    className="max-w-full h-auto rounded-sm"
-                />
-                <span className="absolute top-0 text-center my-3.5 px-1.5 font-impact text-3xl uppercase text-white tracking-wide text-outline">
-                    One does not simply
-                </span>
-                <span className="absolute bottom-0 text-center my-3.5 px-1.5 font-impact text-3xl uppercase text-white tracking-wide text-outline">
-                    Walk into Mordor
-                </span>
+            <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-2 relative flex flex-col justify-center items-center">
+                    <img
+                        src="http://i.imgflip.com/1bij.jpg"
+                        className="w-full rounded-sm"
+                    />
+                    <span className="absolute top-0 text-center my-3.5 px-1.5 font-impact text-3xl uppercase text-white tracking-wide text-outline">
+                        One does not simply
+                    </span>
+                    <span className="absolute bottom-0 text-center my-3.5 px-1.5 font-impact text-3xl uppercase text-white tracking-wide text-outline">
+                        Walk into Mordor
+                    </span>
+                </div>
             </div>
         </main>
     );
