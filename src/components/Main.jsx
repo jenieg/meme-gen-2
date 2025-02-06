@@ -1,12 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Main() {
     const [meme, setMeme] = useState({
-        topText: "",
-        bottomText: "",
+        topText: "one does not simply",
+        bottomText: "walk into mordor",
         imageUrl: "http://i.imgflip.com/1bij.jpg"
     })
 
+    const [memeArray, setMemeArray] = useState([])
+    
+    function getMemeArray() {
+        fetch('https://api.imgflip.com/get_memes')
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Response Not Ok')
+                } return res.json()
+            })
+            .then(data => {
+                const memeUrls = data.data.memes.map(meme => meme.url)
+                setMemeArray(memeUrls)
+            })
+            .catch(error => {
+                console.error('Error fetching memes:', error);
+            })
+    }
+
+    useEffect(() => {
+        getMemeArray();
+    }, []);
+    
     function handleChange(event) {
         const {value, name} = event.currentTarget
         setMeme(prevMeme => ({
@@ -14,6 +36,7 @@ export default function Main() {
             [name]: value
         }))
     }
+
 
     return (
         <main className="mx-auto p-9 max-w-2xl">
